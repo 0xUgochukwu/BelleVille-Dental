@@ -1,3 +1,6 @@
+
+//*************** RESPONSIVE NAV BAR ***************//
+
 (function ($) {
   // Begin jQuery
   $(function () {
@@ -24,11 +27,38 @@
   }); // end DOM ready
 })(jQuery); // end jQuery
 
-const id = document.querySelectorAll(".nav-dropdown").forEach((el) => {
-  el.addEventListener("click", (e) => {
-    console.log(e.target);
-    return e.target.getAttribute("data-id");
-  });
-});
 
-export default id;
+//*************** VISITOR COUNT ***************//
+const VISITOR_COUNT_KEY = 'visitor-count';
+
+function getVisitorCount() {
+  let count = localStorage.getItem(VISITOR_COUNT_KEY);
+  if (!count) {
+    count = 0;
+  }
+  return parseInt(count, 10);
+}
+
+function updateVisitorCount() {
+  const countElement = document.getElementById('visitor-count');
+  const countElementMobile = document.getElementById('visitor-count-mobile');
+  const count = getVisitorCount() + 1;
+  countElement.textContent = count;
+  countElementMobile.textContent = count;
+  localStorage.setItem(VISITOR_COUNT_KEY, count.toString());
+}
+
+// Update visitor count initially and on page load
+updateVisitorCount();
+window.addEventListener('load', updateVisitorCount);
+
+
+
+// const id = document.querySelectorAll(".nav-dropdown").forEach((el) => {
+//   el.addEventListener("click", (e) => {
+//     console.log(e.target);
+//     return e.target.getAttribute("data-id");
+//   });
+// });
+
+// export default id;
