@@ -867,7 +867,34 @@ div .col {
   border-top: 2px solid;
 }
 
-/********** Isaac CSS **********/
+
+/* Continous Scrolling Ticker */
+.ticker {
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 18px;
+  padding-right: 100%;
+  animation: ticker 15s infinite linear;
+}
+
+.ticker:hover {
+  animation-play-state: paused;
+}
+.ticker p {
+  margin: 5px 0;
+  display: inline-block;
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/********** Doctors Section **********/
 :root {
   --primary: #096c62;
   --secondary: #777777;
@@ -1125,3 +1152,6 @@ div .col {
   height: 3.5rem;
   width: 60%;
 }
+
+
+
