@@ -53,20 +53,32 @@ updateVisitorCount();
 window.addEventListener('load', updateVisitorCount);
 
 
-
-
 //*************** NAVIGATION ***************//
 
+let contentFile;
 
-// fetch children.html
-
-
-// add event listener to all .menu-options ul li a
 window.addEventListener('DOMContentLoaded', (event) => {
+
+  // Desktop View Nav Bar
   document.querySelectorAll(".menu-options ul li a").forEach(el => {
       el.addEventListener('click',function (e) {
         event.preventDefault();
-            let contentFile = "html/" + e.target.id + ".html";
+            contentFile = "html/" + e.target.id + ".html";
+            fetch(contentFile)
+              .then((response) => {
+                return response.text();
+              })
+              .then((data) => {
+                document.getElementById("body").innerHTML = data;
+              });
+      });
+  });
+
+  // Mobile View Nav Bar 
+  document.querySelectorAll(".nav-dropdown li a").forEach(el => {
+      el.addEventListener('click',function (e) {
+        event.preventDefault();
+            contentFile = "html/" + e.target.id + ".html";
             fetch(contentFile)
               .then((response) => {
                 return response.text();
@@ -79,9 +91,3 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 
-// document.querySelectorAll("").addEventListener(
-//   "click",
-//   function (event) {
-//     
-//   }
-// )
