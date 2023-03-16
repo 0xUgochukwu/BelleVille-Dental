@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BelleVille Dental</title>
 
+
+    <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
@@ -16,6 +18,8 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+
+    <!-- Preconnect to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -28,6 +32,8 @@
       href="https://fonts.googleapis.com/css2?family=Taviraj:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.css"
@@ -36,16 +42,28 @@
       referrerpolicy="no-referrer"
     />
 
+
+
+    <!-- jQuery -->
     <script
       defer
       src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"
     ></script>
+
+
+    <!-- Bootstrap JS -->
     <script
       defer
       src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
     ></script>
 
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/articles.css" />
+    <link rel="stylesheet" href="./css/resources.css" />
+
+
   </head>
 
   <body>
@@ -70,13 +88,10 @@
                 <div class="col">
                   <ul class="options">
                     <li>
-                      <a id="children" href="#">Related Courses</a>
+                      <a id="help-documents">Help Documents</a>
                     </li>
                     <li>
-                      <a href="#">Help Documents</a>
-                    </li>
-                    <li>
-                      <a href="#">Faculty Resources</a>
+                      <a id="faculty-resources">Faculty Resources</a>
                     </li>
                   </ul>
                 </div>
@@ -84,10 +99,7 @@
                 <div class="col">
                   <ul class="options">
                     <li>
-                      <a href="#">Student Resources</a>
-                    </li>
-                    <li>
-                      <a href="#">Case Studies</a>
+                      <a id="student-resources">Student Resources</a>
                     </li>
                   </ul>
                 </div>
@@ -108,14 +120,11 @@
                 <div class="col">
                   <ul class="options">
                     <li>
-                      <a href="#">Patient education</a>
-                    </li>
-                    <li>
-                      <a href="#">Children's Dental Health</a>
+                      <a id="children">Children's Dental Health</a>
                     </li>
 
                     <li>
-                      <a href="#">Pregnancy</a>
+                      <a id="pregnancy">Pregnancy</a>
                     </li>
                   </ul>
                 </div>
@@ -123,11 +132,9 @@
                 <div class="col">
                   <ul class="options">
                     <li>
-                      <a href="#">Patient Resources</a>
+                      <a id="patient-resources">Patient Resources</a>
                     </li>
-                    <li>
-                      <a href="#">Whole body Health</a>
-                    </li>
+
                   </ul>
                 </div>
               </div>
@@ -147,28 +154,25 @@
                 <div class="col">
                   <ul class="options">
                     <li>
-                      <a href="#">Documents</a>
+                      <a id="help-documents">Documents</a>
                     </li>
                     <li>
-                      <a href="#">Request Teach & Learn</a>
+                      <a href="#">Crest - Why Stannous Fluoride</a>
                     </li>
-                    <li>
-                      <a href="#">Oral-B - Round For A Reason</a>
-                    </li>
+                    
                   </ul>
                 </div>
 
                 <div class="col">
                   <ul class="options">
                     <li>
+                      <a id="oral-b-round">Oral-B - Round For A Reason</a>
+                    </li>
+                    <li>
                       <a href="#">Dental Research Database</a>
                     </li>
-                    <li>
-                      <a href="#">Videos</a>
-                    </li>
-                    <li>
-                      <a href="#">Crest - Why Stannous Fluoride</a>
-                    </li>
+
+
                   </ul>
                 </div>
               </div>
@@ -249,19 +253,13 @@
               <a>Professional education</a>
               <ul class="nav-dropdown">
                 <li>
-                  <a href="#">Related Courses</a>
+                  <a id="help-documents-m">Help Documents</a>
                 </li>
                 <li>
-                  <a href="#">Help Documents</a>
+                  <a id="faculty-resources-m">Faculty Resources</a>
                 </li>
                 <li>
-                  <a href="#">Faculty Resources</a>
-                </li>
-                <li>
-                  <a href="#">Student Resources</a>
-                </li>
-                <li>
-                  <a href="#">Case Studies</a>
+                  <a id="student-resources-m">Student Resources</a>
                 </li>
               </ul>
             </li>
@@ -269,21 +267,16 @@
               <a href="#!">Patient education</a>
               <ul class="nav-dropdown">
                 <li>
-                  <a href="#">Patient education</a>
+                  <a id="patient-resources-m">Patient Resources</a>
                 </li>
                 <li>
-                  <a href="#">Children's Dental Health</a>
+                  <a id="children-m">Children's Dental Health</a>
                 </li>
 
                 <li>
-                  <a href="#">Pregnancy</a>
+                  <a id="pregnancy-m">Pregnancy</a>
                 </li>
-                <li>
-                  <a href="#">Patient Resources</a>
-                </li>
-                <li>
-                  <a href="#">Whole body Health</a>
-                </li>
+                
               </ul>
             </li>
             <li>
@@ -293,17 +286,9 @@
                   <a href="#">Documents</a>
                 </li>
                 <li>
-                  <a href="#">Request Teach & Learn</a>
+                  <a id="oral-b-round">Oral-B - Round For A Reason</a>
                 </li>
-                <li>
-                  <a href="#">Oral-B - Round For A Reason</a>
-                </li>
-                <li>
-                  <a href="#">Dental Research Database</a>
-                </li>
-                <li>
-                  <a href="#">Videos</a>
-                </li>
+
                 <li>
                   <a href="#">Crest - Why Stannous Fluoride</a>
                 </li>
@@ -1115,7 +1100,6 @@
       integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
       crossorigin="anonymous"
     ></script>
-    <script src="./js/content.js"></script>
     <script src="./js/nav.js"></script>
     <script src="./js/footer.js"></script>
   </body>

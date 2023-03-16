@@ -1,4 +1,3 @@
-
 //*************** RESPONSIVE NAV BAR ***************//
 
 (function ($) {
@@ -54,40 +53,67 @@ window.addEventListener('load', updateVisitorCount);
 
 
 //*************** NAVIGATION ***************//
-
+let defaultPage = "html/default.html";
 let contentFile;
 
 window.addEventListener('DOMContentLoaded', (event) => {
 
   // Desktop View Nav Bar
   document.querySelectorAll(".menu-options ul li a").forEach(el => {
-      el.addEventListener('click',function (e) {
-        event.preventDefault();
-            contentFile = "html/" + e.target.id + ".html";
-            fetch(contentFile)
-              .then((response) => {
-                return response.text();
-              })
-              .then((data) => {
-                document.getElementById("body").innerHTML = data;
-              });
-      });
+    el.addEventListener('click', function (e) {
+      event.preventDefault();
+      contentFile = "html/" + e.target.id + ".html";
+      fetch(contentFile)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.text();
+        })
+        .then((data) => {
+          document.getElementById("body").innerHTML = data;
+        })
+        .catch((error) => {
+          console.error('Error fetching content:', error);
+          fetch(defaultPage)
+            .then((response) => response.text())
+            .then((data) => {
+              document.getElementById("body").innerHTML = data;
+            })
+            .catch((error) => {
+              console.error('Error fetching default page:', error);
+            });
+        });
+
+    });
   });
 
   // Mobile View Nav Bar 
   document.querySelectorAll(".nav-dropdown li a").forEach(el => {
-      el.addEventListener('click',function (e) {
-        event.preventDefault();
-            contentFile = "html/" + e.target.id + ".html";
-            fetch(contentFile)
-              .then((response) => {
-                return response.text();
-              })
-              .then((data) => {
-                document.getElementById("body").innerHTML = data;
-              });
-      });
+    el.addEventListener('click', function (e) {
+      event.preventDefault();
+      contentFile = "html/" + e.target.id.slice(0, (e.target.id.length - 2)) + ".html";
+      fetch(contentFile)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.text();
+        })
+        .then((data) => {
+          document.getElementById("body").innerHTML = data;
+        })
+        .catch((error) => {
+          console.error('Error fetching content:', error);
+          fetch(defaultPage)
+            .then((response) => response.text())
+            .then((data) => {
+              document.getElementById("body").innerHTML = data;
+            })
+            .catch((error) => {
+              console.error('Error fetching default page:', error);
+            });
+        });;
+    });
   });
 });
-
-

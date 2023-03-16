@@ -103,9 +103,10 @@ nav {
   color: #000;
   transition-duration: 300ms;
 }
+
 .options li a:hover {
   font-size: 1.2rem;
-  color: #096c62;
+  color: #096c62 !important;
 }
 
 div .col {
@@ -408,7 +409,7 @@ div .col {
 .button {
   position: absolute;
   left: 85%;
-  margin-top: 15px;
+  margin-top: 10px;
   display: flex;
 }
 .button .button5 {
