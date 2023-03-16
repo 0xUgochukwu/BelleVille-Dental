@@ -29,7 +29,7 @@ function showPosition(position) {
   const longitude = position.coords.longitude;
 
   // Use the OpenCage Geocoder API to get the city and country name based on the latitude and longitude
-  fetch('/js/secrets.json')
+  fetch('/json/secrets.json')
   // Get the API key
     .then(response => response.json())
     .then(data => {

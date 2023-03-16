@@ -54,11 +54,34 @@ window.addEventListener('load', updateVisitorCount);
 
 
 
-// const id = document.querySelectorAll(".nav-dropdown").forEach((el) => {
-//   el.addEventListener("click", (e) => {
-//     console.log(e.target);
-//     return e.target.getAttribute("data-id");
-//   });
-// });
 
-// export default id;
+//*************** NAVIGATION ***************//
+
+
+// fetch children.html
+
+
+// add event listener to all .menu-options ul li a
+window.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll(".menu-options ul li a").forEach(el => {
+      el.addEventListener('click',function (e) {
+        event.preventDefault();
+            let contentFile = "html/" + e.target.id + ".html";
+            fetch(contentFile)
+              .then((response) => {
+                return response.text();
+              })
+              .then((data) => {
+                document.getElementById("body").innerHTML = data;
+              });
+      });
+  });
+});
+
+
+// document.querySelectorAll("").addEventListener(
+//   "click",
+//   function (event) {
+//     
+//   }
+// )
