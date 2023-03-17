@@ -513,7 +513,7 @@ menu.addEventListener("click", (e) => {
                 >${el.product_desc}</a
               >
               <div class="ratings">
-                <div class="stars">
+                <div class="ps stars">
                   <i class="bi bi-star-fill"></i>
                   <i class="bi bi-star-fill"></i>
                   <i class="bi bi-star-fill"></i>
@@ -560,6 +560,21 @@ menu.addEventListener("click", (e) => {
     }
     renderPage();
 
+    const starsFnc = function (starList, value) {
+      if (value == 0) {
+        return;
+      }
+      console.log(starList, value);
+
+      starList.forEach((el, index) => {
+        if (index < value) {
+          el.classList.add("active-star");
+        }
+      });
+    };
+
+    // starsFnc(document.querySelectorAll(".ps i"), 3);
+
     list.forEach((el, index) => {
       el.addEventListener("click", (e) => {
         e.preventDefault();
@@ -574,7 +589,9 @@ menu.addEventListener("click", (e) => {
           .querySelector("i")
           .classList.add("bi-caret-down-fill");
         index == 0 ? (activeList = e.target) : (activeSort = e.target);
-        renderPage();
+
+       el.previousElementSibling.style.borderRadius = ""
+         renderPage();
       });
     });
 
@@ -617,18 +634,17 @@ menu.addEventListener("click", (e) => {
             ++star[el["stars"]];
           });
         };
-        console.log(count(item));
-        console.log(item);
-
-        console.log(star);
+        count(item);
 
         for (const key in star) {
           let sum = 0;
           if (star[key] > 0) {
             sum += key * star[key];
-            console.log(sum);
+            item["average_stars"] = Math.round(
+              sum / item.reviews.length
+            ).toFixed(1);
           }
-          item["average_stars"] = Math.round(sum / item.reviews.length);
+          console.log(item.average_stars);
         }
 
         document.getElementById("body").innerHTML = "";
@@ -642,7 +658,7 @@ menu.addEventListener("click", (e) => {
         <div class="text-ov">
           <a class="product_desc-ov">${item.product_desc}</a>
           <div class="ratings">
-            <div class="stars">
+            <div class="povs stars">
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
@@ -700,7 +716,7 @@ menu.addEventListener("click", (e) => {
 
           <div class="avg-rating">
             <p>Average Rating</p>
-            <div class="stars-ov">
+            <div class="avgs stars">
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
@@ -766,15 +782,17 @@ menu.addEventListener("click", (e) => {
     </div>
   </div>
 </section>
-
         `;
         document.getElementById("body").insertAdjacentHTML("beforeend", html);
+
+        starsFnc(document.querySelectorAll(".povs i"), item.average_stars);
+        starsFnc(document.querySelectorAll(".avgs i"), item.average_stars);
 
         item.reviews.forEach((el) => {
           let i = 0;
           const renhtml = `<div class="a-review">
             <div class="star-name">
-              <div class="stars">
+              <div class="rvs stars">
                 <i class="bi bi-star-fill"></i>
                 <i class="bi bi-star-fill"></i>
                 <i class="bi bi-star-fill"></i>
@@ -790,9 +808,9 @@ menu.addEventListener("click", (e) => {
             .insertAdjacentHTML("beforeend", renhtml);
         });
 
-        const starsFnc = function(){
-
-        }
+        document.querySelectorAll(".a-review").forEach((el, index) => {
+          starsFnc(el.querySelectorAll(".rvs i"), item.reviews[index].stars);
+        });
 
         for (const key in star) {
           if (star[key] > 0) {
@@ -873,11 +891,13 @@ menu.addEventListener("click", (e) => {
               );
               return;
             }
-            item.review.push({
+            item.reviews.push({
               username: username.value,
               stars: numStar,
               text: comment.value,
             });
+
+            console.log(item.reviews);
 
             // localStorage.setItem(
             //   "users-review",
@@ -888,6 +908,9 @@ menu.addEventListener("click", (e) => {
             //   })
             // );
             popUpFnc("none", "none", "");
+            console.log(item);
+
+            count(item);
           }
         });
         console.log(rateLink);
