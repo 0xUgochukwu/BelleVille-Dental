@@ -29,6 +29,12 @@ nav {
   border-radius: 100%;
 }
 
+.ticker-container{
+  width: 100vw;
+  background: #000;
+  overflow: hidden;
+}
+
 .navbar {
   background-color: #fff;
   border: 0;

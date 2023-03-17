@@ -523,7 +523,7 @@ menu.addEventListener("click", (e) => {
                 <p class="average_stars">${el.average_stars}</p>
                 <p class="number_of_reviews">${el.number_of_reviews}</p>
                 </div>
-                <p class="price"> <b> &#8358 ${el.price}</b></p>
+                <p class="price"> &#8358 ${el.price}</p>
               <a href="">Rate this product</a>
             </div>
           </div>`;
@@ -566,6 +566,13 @@ menu.addEventListener("click", (e) => {
         console.log(e.target);
         el.querySelector(".active_page").classList.remove("active_page");
         e.target.classList.add("active_page");
+        el.style.display = "";
+        el.previousElementSibling
+          .querySelector("i")
+          .classList.remove("bi-caret-up-fill");
+        el.previousElementSibling
+          .querySelector("i")
+          .classList.add("bi-caret-down-fill");
         index == 0 ? (activeList = e.target) : (activeSort = e.target);
         renderPage();
       });
@@ -594,135 +601,308 @@ menu.addEventListener("click", (e) => {
         if (e.target.matches("a")) {
           e.preventDefault();
         }
+
+        const star = {
+          1: 0,
+          2: 0,
+          3: 0,
+          4: 0,
+          5: 0,
+        };
+
+        const count = function (obj) {
+          obj.reviews.forEach((el) => {
+            console.log(el);
+
+            ++star[el["stars"]];
+          });
+        };
+        console.log(count(item));
+        console.log(item);
+
+        console.log(star);
+
+        for (const key in star) {
+          let sum = 0;
+          if (star[key] > 0) {
+            sum += key * star[key];
+            console.log(sum);
+          }
+          item["average_stars"] = Math.round(sum / item.reviews.length);
+        }
+
         document.getElementById("body").innerHTML = "";
-        const html = ` <section id="product_overview">
-            <div class="">
-                <div class="product_items_overview">
-                    <div class="product_item-ov">
-                        <div>
-                            <img src= ${item.src} alt="" />
-                        </div>
-                        <div class="text">
-                            <a class="product_desc-ov">${item.product_desc}</a>
-                            <div class="ratings">
-                                <div class="stars">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                </div>
-                                <p class="average_stars">${item.average_stars}</p>
-                                <p class="number_of_reviews">(${item.reviews.length})</p>
-                            </div>
-                            <p class="price"> <b> &#8358${item.price}</b></p>
-                            <a class="rate" href="">Rate this product</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="overview">
-                    <div class="header">
-                        <h2 class="active_detail">Overview</h2>
-                        <h2>Review</h2>
-                    </div>
-                    <div class="content overview-content">
-                        <h2><b></b>Product Details</b></h2>
-                        <p class="details">
-                            ${item.product_details}
-                        </p>
-
-                    </div>
-                    <div class="content review-content inactive">
-                        <h2><b></b>Ratings & Reviews</b></h2>
-                        <div class="rate-stats">
-                            <div class="rate-stats-ov">
-                                <div class="stat 5">
-                                    <p>5</p> <i class="bi bi-star-fill"></i> <span></span>
-                                    <p class="individuals"></p>
-                                </div>
-                                <div class="stat 4">
-                                    <p>4</p> <i class="bi bi-star-fill"></i> <span></span>
-                                    <p class="individuals"></p>
-                                </div>
-                                <div class="stat 3">
-                                    <p>3</p> <i class="bi bi-star-fill"></i> <span></span>
-                                    <p class="individuals"></p>
-                                </div>
-                                <div class="stat 2">
-                                    <p>2</p> <i class="bi bi-star-fill"></i> <span></span>
-                                    <p class="individuals"></p>
-                                </div>
-                                <div class="stat 1">
-                                    <p>1</p> <i class="bi bi-star-fill"></i> <span></span>
-                                    <p class="individuals"></p>
-                                </div>
-                            </div>
-
-                            <div class="avg-rating">
-                                <p>Average Rating</p>
-                                <div class="stars">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                </div>
-                                <p></p>
-                            </div>
-                        </div>
-
-                        <div class="review-query">
-                            <p class="view">${item.reviews.length}</p>
-                        </div>
-
-                        <div class="reviews" data-count=${item.reviews.length}>
-                            <div class="a-review">
-                                <div class="star-name">
-                                    <div class="stars">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                    </div>
-                                    <p class="name"><span class="time"> - 8days ago</span> </p>
-                                </div>
-                                <p class="review-text">
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        const html = `<section id="product_overview">
+  <div class="">
+    <div class="product_items_overview">
+      <div class="product_item-ov">
+        <div>
+          <img src="${item.src}" alt="" />
+        </div>
+        <div class="text-ov">
+          <a class="product_desc-ov">${item.product_desc}</a>
+          <div class="ratings">
+            <div class="stars">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
             </div>
-            <div class="rate_pop-up">
-                <i class="bi bi-x-circle-fill close"></i>
-                <div class="main-rate">
-                    <h3>Rate Product</h3>
-                    <div class="stars">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                    </div>
-                </div>
-                <div class="review">
-                    <div>
-                        <label for="name">Name (*)</label>
-                        <br>
-                        <input required maxlength="10" type="text" name="name" id="name" pattern="^[a-zA-Z0-9]*$" />
-                    </div>
-                    <div>
-                        <label for="review">Review (*)</label>
-                        <br>
-                        <textarea name="review" id="comment" cols="" rows="3"
-                            placeholder="Enter your comment here..." wrap="hard" maxlength="400" required></textarea>
-                    </div>
-                    <button type="submit" class="submit">Submit</button>
-                    <p>(*) Required Field</p>
-                </div>
-        </section>`;
+            <p class="average_stars">${item.average_stars || ""}</p>
+            <p class="number_of_reviews">(${item.reviews.length})</p>
+          </div>
+          <p class="price">${item.price}</p>
+          <a class="rate" href="">Rate this product</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="overview">
+      <div class="header">
+        <h2 class="active_detail">Overview</h2>
+        <h2>Review</h2>
+      </div>
+      <div class="content overview-content">
+        <h2>Product Details</h2>
+        <p class="details">${item.product_details}</p>
+      </div>
+      <div class="content review-content inactive">
+        <h2><b>Ratings & Reviews</b></h2>
+        <div class="rate-stats">
+          <div class="rate-stats-ov">
+            <div class="stat stat-5">
+              <p>5</p>
+              <i class="bi bi-star-fill"></i> <span></span>
+              <p class="individuals">${star[5] || ""}</p>
+            </div>
+            <div class="stat stat-4">
+              <p>4</p>
+              <i class="bi bi-star-fill"></i> <span></span>
+              <p class="individuals">${star[4] || ""}</p>
+            </div>
+            <div class="stat stat-3">
+              <p>3</p>
+              <i class="bi bi-star-fill"></i> <span></span>
+              <p class="individuals">${star[3] || ""}</p>
+            </div>
+            <div class="stat stat-2">
+              <p>2</p>
+              <i class="bi bi-star-fill"></i> <span></span>
+              <p class="individuals">${star[2] || ""}</p>
+            </div>
+            <div class="stat stat-1">
+              <p>1</p>
+              <i class="bi bi-star-fill"></i> <span></span>
+              <p class="individuals">${star[1] || ""}</p>
+            </div>
+          </div>
+
+          <div class="avg-rating">
+            <p>Average Rating</p>
+            <div class="stars-ov">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+            <p style="display: inline; margin-left: 1.5rem">
+              ${item.average_stars || ""}
+            </p>
+          </div>
+        </div>
+
+        <div class="review-query">
+          <p class="view">${item.reviews.length} Reviews</p>
+        </div>
+
+        <div class="reviews" data-count="${item.reviews.length}">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rate_pop-up">
+    <i class="bi bi-x-circle-fill close"></i>
+    <div class="main-rate">
+      <h3>Rate Product</h3>
+      <div class="stars">
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+      </div>
+    </div>
+    <div class="review">
+      <div>
+        <label for="name">Name (*)</label>
+        <br />
+        <input
+          required
+          maxlength="10"
+          type="text"
+          name="name"
+          id="name"
+          pattern="^[a-zA-Z0-9]*$"
+        />
+      </div>
+      <div>
+        <label for="review">Review (*)</label>
+        <br />
+        <textarea
+          name="review"
+          id="comment"
+          cols=""
+          rows="3"
+          placeholder="Enter your comment here..."
+          wrap="hard"
+          maxlength="400"
+          required
+        ></textarea>
+      </div>
+      <button type="submit" class="submit">Submit</button>
+      <p>(*) Required Field</p>
+    </div>
+  </div>
+</section>
+
+        `;
+        document.getElementById("body").insertAdjacentHTML("beforeend", html);
+
+        item.reviews.forEach((el) => {
+          let i = 0;
+          const renhtml = `<div class="a-review">
+            <div class="star-name">
+              <div class="stars">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+              </div>
+              <p class="name">${el.username} </p>
+            </div>
+            <p class="review-text"> ${el.text}</p>
+          </div>`;
+          document
+            .querySelector(".reviews")
+            .insertAdjacentHTML("beforeend", renhtml);
+        });
+
+        const starsFnc = function(){
+
+        }
+
+        for (const key in star) {
+          if (star[key] > 0) {
+            const percentage = () => {
+              return `${(star[key] / item.reviews.length) * 100}%`;
+            };
+            const stat = document.querySelector(`.stat-${key}`);
+            const statBfr = window.getComputedStyle(stat, "::before");
+
+            stat.style.setProperty("--statWidth", percentage());
+            console.log(statBfr.width);
+          }
+        }
+
+        const rateLink = document.querySelector(".rate");
+        const popUp = document.querySelector(".rate_pop-up");
+        const overlay = document.querySelector(".overlay");
+        const closebtn = document.querySelector(".close");
+        const submitbtn = document.querySelector(".submit");
+        const stars = popUp.querySelectorAll(".stars i");
+        const username = document.querySelector("#name");
+        const comment = document.querySelector("#comment");
+        const detailHeader = document.querySelector(".header");
+        const hh2 = detailHeader.querySelectorAll("h2");
+        const content = document.querySelectorAll(".content");
+        const reviewContainer = document.querySelectorAll(".reviews");
+        console.log(content);
+
+        let numStar;
+
+        console.log(submitbtn);
+        const popUpFnc = function (dv, ov, scroll) {
+          popUp.style.display = dv;
+          overlay.style.display = ov;
+          document.body.style.overflow = scroll;
+        };
+
+        rateLink.addEventListener("click", (e) => {
+          e.preventDefault();
+          window.scrollTo(0, 0);
+          popUpFnc("block", "block", "hidden");
+        });
+
+        popUp.addEventListener("click", (e) => {
+          if (e.target == closebtn) {
+            console.log("close");
+            popUpFnc("none", "none", "");
+          }
+
+          stars.forEach((star, index1) => {
+            if (e.target == star) {
+              console.log(index1);
+              numStar = index1 + 1;
+              stars.forEach((star, index2) => {
+                index1 >= index2
+                  ? star.classList.add("active-star")
+                  : star.classList.remove("active-star");
+              });
+            }
+          });
+
+          if (e.target == submitbtn) {
+            const regExpMatch = username.value.match(username.pattern)
+              ? true
+              : false;
+            if (!stars[0].classList.contains("active-star")) {
+              alert("Please make use of stars");
+              return;
+            }
+            if (
+              !username.value ||
+              !comment.value ||
+              regExpMatch == false ||
+              comment.value.length < 4
+            ) {
+              alert(
+                'Invalid Input\nInput fields must not be empty\n"Name" field must have only names and numbers. No special characters or space\n"Review" field must have at least 4 letters'
+              );
+              return;
+            }
+            item.review.push({
+              username: username.value,
+              stars: numStar,
+              text: comment.value,
+            });
+
+            // localStorage.setItem(
+            //   "users-review",
+            //   JSON.stringify({
+            //     username: username.value,
+            //     stars: numStar,
+            //     text: comment.value,
+            //   })
+            // );
+            popUpFnc("none", "none", "");
+          }
+        });
+        console.log(rateLink);
+
+        detailHeader.addEventListener("click", (e) => {
+          hh2.forEach((el, index) => {
+            if (e.target == el) {
+              el.classList.add("active_detail");
+              content[index].classList.remove("inactive");
+            } else {
+              el.classList.remove("active_detail");
+              content[index].classList.add("inactive");
+            }
+          });
+        });
       })
     );
   }

@@ -1,6 +1,5 @@
-PRODUCT PAGE 
+/* PRODUCT PAGE  */
 #products_overview {
-  margin-top: 2rem;
   padding: 1rem 0;
   position: relative;
 }
@@ -27,6 +26,7 @@ PRODUCT PAGE
   padding: 1rem;
   display: flex;
   width: 100%;
+  border-bottom: 2px solid rgba(129, 129, 129, 0.504);
 }
 
 .product_item-ov div {
@@ -44,31 +44,32 @@ PRODUCT PAGE
   max-height: 350px;
 }
 
-.text {
+.text-ov {
   padding-top: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.stars {
+.stars-ov {
   max-width: max-content;
   min-width: 130px;
 }
 
-.stars i {
+.stars-ov i {
   font-size: 1.2rem;
   color: rgba(129, 129, 129, 0.504);
 }
 
-.text a {
-  font-size: 1.2rem;
+.text-ov a {
+  font-size: 1.5rem;
   color: #252525;
   text-decoration: none;
   font-weight: 600;
 }
 
-.text a:last-of-type {
+.text-ov a:last-of-type {
+  font-size: 1.3rem;
   font-weight: 300;
 }
 
@@ -131,12 +132,12 @@ PRODUCT PAGE
   justify-self: flex-end;
 }
 
-.main-rate .stars i,
+.main-rate .stars-ov i,
 .rate_pop-up > i {
   cursor: pointer;
 }
 
-.main-rate .stars i {
+.main-rate .stars-ov i {
   transition: color 0.2s ease-in;
 }
 
@@ -198,6 +199,7 @@ PRODUCT PAGE
 
 .rate-stats-ov div span::before {
   content: "";
+  width: var(--statWidth);
   height: 100%;
   position: absolute;
   border-radius: 0.2rem;
@@ -214,11 +216,12 @@ PRODUCT PAGE
   width: 100%;
   height: 2rem;
   margin: 1.5rem 0;
+  max-width: 40rem;
 }
 
 .review-query p {
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 .star-name {
@@ -252,9 +255,9 @@ PRODUCT PAGE
   font-size: 1.2rem;
 }
 
-.a-review{
+.a-review {
   padding: 1rem;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
 }
 .reviews .a-review:nth-of-type(2n - 1) {
   background: #c1c1c172;
