@@ -26,9 +26,8 @@
   }); // end DOM ready
 })(jQuery); // end jQuery
 
-
 //*************** VISITOR COUNT ***************//
-const VISITOR_COUNT_KEY = 'visitor-count';
+const VISITOR_COUNT_KEY = "visitor-count";
 
 function getVisitorCount() {
   let count = localStorage.getItem(VISITOR_COUNT_KEY);
@@ -39,8 +38,8 @@ function getVisitorCount() {
 }
 
 function updateVisitorCount() {
-  const countElement = document.getElementById('visitor-count');
-  const countElementMobile = document.getElementById('visitor-count-mobile');
+  const countElement = document.getElementById("visitor-count");
+  const countElementMobile = document.getElementById("visitor-count-mobile");
   const count = getVisitorCount() + 1;
   countElement.textContent = count;
   countElementMobile.textContent = count;
@@ -49,18 +48,19 @@ function updateVisitorCount() {
 
 // Update visitor count initially and on page load
 updateVisitorCount();
-window.addEventListener('load', updateVisitorCount);
-
+window.addEventListener("load", updateVisitorCount);
 
 //*************** NAVIGATION ***************//
 let defaultPage = "html/default.html";
 let contentFile;
 
-window.addEventListener('DOMContentLoaded', (event) => {
-
+window.addEventListener("DOMContentLoaded", (event) => {
   // Desktop View Nav Bar
-  document.querySelectorAll(".menu-options ul li a").forEach(el => {
-    el.addEventListener('click', function (e) {
+  document.querySelectorAll(".menu-options ul li a").forEach((el, index) => {
+    el.addEventListener("click", function (e) {
+      if (index >= 10 && index <= 14) {
+        return;
+      }
       event.preventDefault();
       contentFile = "html/" + e.target.id + ".html";
       fetch(contentFile)
@@ -74,25 +74,30 @@ window.addEventListener('DOMContentLoaded', (event) => {
           document.getElementById("body").innerHTML = data;
         })
         .catch((error) => {
-          console.error('Error fetching content:', error);
+          console.error("Error fetching content:", error);
           fetch(defaultPage)
             .then((response) => response.text())
             .then((data) => {
               document.getElementById("body").innerHTML = data;
             })
             .catch((error) => {
-              console.error('Error fetching default page:', error);
+              console.error("Error fetching default page:", error);
             });
         });
-
     });
   });
 
-  // Mobile View Nav Bar 
-  document.querySelectorAll(".nav-dropdown li a").forEach(el => {
-    el.addEventListener('click', function (e) {
+  // Mobile View Nav Bar
+  document.querySelectorAll(".nav-dropdown li a").forEach((el, index) => {
+    el.addEventListener("click", function (e) {
+      if (index >= 9 && index <= 13) {
+        return;
+      }
       event.preventDefault();
-      contentFile = "html/" + e.target.id.slice(0, (e.target.id.length - 2)) + ".html";
+      contentFile =
+        "html/" + e.target.id.slice(0, e.target.id.length - 2) + ".html";
+        console.log(contentFile);
+        
       fetch(contentFile)
         .then((response) => {
           if (!response.ok) {
@@ -104,16 +109,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
           document.getElementById("body").innerHTML = data;
         })
         .catch((error) => {
-          console.error('Error fetching content:', error);
+          console.error("Error fetching content:", error);
           fetch(defaultPage)
             .then((response) => response.text())
             .then((data) => {
               document.getElementById("body").innerHTML = data;
             })
             .catch((error) => {
-              console.error('Error fetching default page:', error);
+              console.error("Error fetching default page:", error);
             });
-        });;
+        });
     });
   });
 });
