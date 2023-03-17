@@ -11,8 +11,14 @@
 .display_options {
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 2rem;
   justify-content: space-evenly;
+}
+
+.display_options div:first-of-type,
+.display_options div:nth-of-type(2){
+  flex-grow: 1;
+  max-width: 20rem;
 }
 
 #category {
@@ -32,7 +38,6 @@
 
 @media only screen and (min-width: 768px) {
   .display_options {
-    gap: 2rem;
     flex-direction: row;
   }
 
@@ -53,19 +58,16 @@
   overflow: scroll;
   padding: 0.7rem;
   border-radius: 0.5rem;
+  outline: none;
 }
 
 .select_wrapper {
   position: relative;
 }
 
-.select_wrapper input,
-.select_wrapper i {
-  outline: none;
-  position: absolute;
-}
 
 .select_wrapper i {
+  position: absolute;
   color: #096c62;
   top: 0.8rem;
   right: 1rem;
@@ -87,8 +89,8 @@
   border-right: 1px solid #096c62;
   border-bottom: 1px solid #096c62;
   border-radius: 0 0 0.5rem 0.5rem;
-  margin-top: 2.5rem;
   display: none;
+  transition: display 0.5s ease-in-out;
 }
 
 .display_options ul li:last-child {
@@ -139,8 +141,8 @@
 }
 
 .product_item img {
-  width: 15rem;
-  height: 15rem;
+width: 15rem;
+height: 15rem;
 }
 
 .product_item:hover {
