@@ -1,132 +1,154 @@
- <section id="product_overview">
-        <div class="">
-            <div class="product_items_overview">
-                <div class="product_item-ov">
-                    <div>
-                        <img src="/images/crest_kids_4.jpg" alt="" />
-                    </div>
-                    <div class="text">
-                        <a class="product_desc-ov">Crest+Oral-B iO Transformational Gum Health Electric Toothbrush
-                            System</a>
-                        <div class="ratings">
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <p class="average_stars">4.5</p>
-                            <p class="number_of_reviews">(0)</p>
-                        </div>
-                        <p class="price"> <b> &#8358 2000</b></p>
-                        <a class="rate" href="">Rate this product</a>
-                    </div>
-                </div>
-            </div>
-
-            <div id="overview">
-                <div class="header">
-                    <h2 class="active_detail">Overview</h2>
-                    <h2>Review</h2>
-                </div>
-                <div class="content overview-content">
-                    <h2><b></b>Product Details</b></h2>
-                    <p class="details">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, ducimus. Enim, beatae officiis? Possimus iure consectetur sit, at voluptatem nesciunt vero officia dignissimos ab excepturi aliquid tenetur explicabo cum. Veniam nisi tenetur quia inventore reiciendis architecto excepturi voluptatibus voluptate harum sunt deserunt similique quaerat, laboriosam dicta, aspernatur natus commodi cum.
-                    </p>
-
-                </div>
-                <div class="content review-content inactive">
-                    <h2><b></b>Ratings & Reviews</b></h2>
-                    <div class="rate-stats">
-                        <div class="rate-stats-ov">
-                            <div class="stat 5">
-                                <p>5</p> <i class="bi bi-star-fill"></i> <span></span>
-                                <p class="individuals"></p>
-                            </div>
-                            <div class="stat 4">
-                                <p>4</p> <i class="bi bi-star-fill"></i> <span></span>
-                                <p class="individuals"></p>
-                            </div>
-                            <div class="stat 3">
-                                <p>3</p> <i class="bi bi-star-fill"></i> <span></span>
-                                <p class="individuals"></p>
-                            </div>
-                            <div class="stat 2">
-                                <p>2</p> <i class="bi bi-star-fill"></i> <span></span>
-                                <p class="individuals"></p>
-                            </div>
-                            <div class="stat 1">
-                                <p>1</p> <i class="bi bi-star-fill"></i> <span></span>
-                                <p class="individuals"></p>
-                            </div>
-                        </div>
-
-                        <div class="avg-rating">
-                            <p>Average Rating</p>
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
-                            <p></p>
-                        </div>
-                    </div>
-
-                    <div class="review-query">
-                        <p class="view">DKMS,FSSSSSSMSSD</p>
-                    </div>
-
-                    <div class="reviews" data-count="0">
-                        <div class="a-review">
-                            <div class="star-name">
-                                <div class="stars">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                </div>
-                                <p class="name"> Stephanie <span class="time"> - 8days ago</span> </p>
-                            </div>
-                            <p class="review-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium ratione alias
-                                exercitationem assumenda laudantium nemo cupiditate. Consequatur vel, dolorem est cum
-                                eos aut veniam eveniet nesciunt sequi reprehenderit reiciendis pariatur?
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<section id="product_overview">
+  <div class="">
+    <div class="product_items_overview">
+      <div class="product_item-ov">
+        <div>
+          <img src="${item.src}" alt="" />
         </div>
-        <div class="rate_pop-up">
-            <i class="bi bi-x-circle-fill close"></i>
-            <div class="main-rate">
-                <h3>Rate Product</h3>
-                <div class="stars">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                </div>
+        <div class="text">
+          <a class="product_desc-ov">${item.product_desc}</a>
+          <div class="ratings">
+            <div class="stars">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
             </div>
-            <div class="review">
-                <div>
-                    <label for="name">Name (*)</label>
-                    <br>
-                    <input required maxlength="10" type="text" name="name" id="name" pattern="^[a-zA-Z0-9]*$" />
-                </div>
-                <div>
-                    <label for="review">Review (*)</label>
-                    <br>
-                    <textarea name="review" id="comment" cols="" rows="3" 
-                        placeholder="Enter your comment here..." wrap="hard" maxlength="400" required></textarea>
-                </div>
-                <button type="submit" class="submit">Submit</button>
-                <p>(*) Required Field</p>
+            <p class="average_stars">${ item.average_stars || "" }</p>
+            <p class="number_of_reviews">(${ item.reviews.length })</p>
+          </div>
+          <p class="price">2000</p>
+          <a class="rate" href="">Rate this product</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="overview">
+      <div class="header">
+        <h2 class="active_detail">Overview</h2>
+        <h2>Review</h2>
+      </div>
+      <div class="content overview-content">
+        <h2>Product Details</h2>
+        <p class="details">${item.product_details}</p>
+      </div>
+      <div class="content review-content inactive">
+        <h2><b>Ratings & Reviews</b></h2>
+        <div class="rate-stats">
+          <div class="rate-stats-ov">
+            <div class="stat 5">
+              <p>5</p>
+              <i class="bi bi-star-fill"></i> <span></span>
+              <p class="individuals">${star[5] || ""}</p>
             </div>
-    </section>
+            <div class="stat 4">
+              <p>4</p>
+              <i class="bi bi-star-fill"></i> <span></span>
+              <p class="individuals">${star[4] || ""}</p>
+            </div>
+            <div class="stat 3">
+              <p>3</p>
+              <i class="bi bi-star-fill"></i> <span></span>
+              <p class="individuals">${star[3] || ""}</p>
+            </div>
+            <div class="stat 2">
+              <p>2</p>
+              <i class="bi bi-star-fill"></i> <span></span>
+              <p class="individuals">${star[2] || ""}</p>
+            </div>
+            <div class="stat 1">
+              <p>1</p>
+              <i class="bi bi-star-fill"></i> <span></span>
+              <p class="individuals">${star[1] || ""}</p>
+            </div>
+          </div>
+
+          <div class="avg-rating">
+            <p>Average Rating</p>
+            <div class="stars-ov">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+            <p style="display: inline; margin-left: 1.5rem">
+              ${ item.average_stars || "" }
+            </p>
+          </div>
+        </div>
+
+        <div class="review-query">
+          <p class="view">${item.reviews.length}</p>
+        </div>
+
+        <div class="reviews" data-count="${item.reviews.length}">
+          <div class="a-review">
+            <div class="star-name">
+              <div class="stars">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+              </div>
+              <p class="name">
+                Stephanie <span class="time"> - 8days ago</span>
+              </p>
+            </div>
+            <p class="review-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Praesentium ratione alias exercitationem assumenda laudantium nemo
+              cupiditate. Consequatur vel, dolorem est cum eos aut veniam
+              eveniet nesciunt sequi reprehenderit reiciendis pariatur?
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rate_pop-up">
+    <i class="bi bi-x-circle-fill close"></i>
+    <div class="main-rate">
+      <h3>Rate Product</h3>
+      <div class="stars">
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+      </div>
+    </div>
+    <div class="review">
+      <div>
+        <label for="name">Name (*)</label>
+        <br />
+        <input
+          required
+          maxlength="10"
+          type="text"
+          name="name"
+          id="name"
+          pattern="^[a-zA-Z0-9]*$"
+        />
+      </div>
+      <div>
+        <label for="review">Review (*)</label>
+        <br />
+        <textarea
+          name="review"
+          id="comment"
+          cols=""
+          rows="3"
+          placeholder="Enter your comment here..."
+          wrap="hard"
+          maxlength="400"
+          required
+        ></textarea>
+      </div>
+      <button type="submit" class="submit">Submit</button>
+      <p>(*) Required Field</p>
+    </div>
+  </div>
+</section>
