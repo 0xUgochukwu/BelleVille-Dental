@@ -1171,3 +1171,209 @@ div .col {
 
 
 
+
+
+/* MORE RESPONSIVENESS */
+@media (max-width:1000px){
+  body{
+   margin: 0;
+ } 
+}
+
+@media  (max-width: 1000px) {
+ .body{
+   overflow: hidden;
+ }
+ .nav-list{
+   background: #FFFF;
+ }
+ .footer-container {
+   grid-template-columns: auto auto;
+ }
+ #bootstrap-btn {
+   position: fixed;
+   left: 60%;  
+ }
+ .sect_2{
+   height: 12em;
+   width: 100%;
+ }
+ .sect_2 .sect_2_container{
+   margin-top: 1em;
+   margin-left: 0;
+   padding: 0;
+   position: absolute;
+   left: 0;
+   width: 100%;
+   height: 12em;
+   align-items: center;
+   justify-content: space-between;
+   z-index: -1;
+ }
+ .container_content {
+   margin-left: 0.5em;
+  
+ }
+ .container_content .line-1{
+   position: relative;
+   left: 70%;
+ }
+ .container_content .content_text1 .text-1{
+   font-family: Taviraj;
+   font-size: 1em;
+   font-weight: 400;
+   line-height: 1em;
+ }
+ .container_content .content_text .text-2{
+   font-family: Nunito;
+   font-size: max(0.1em, 0.5em);
+   font-weight: 400;
+   line-height: 1.5em;
+   letter-spacing: 0.02em; 
+   margin-right: 0;
+ }
+ .container_content .content_text .text-3{
+   margin-top: -3em;
+   margin-bottom: .1em;
+   position: relative;
+   left: 70%;
+ }
+ .container_content .line{
+   border: none;
+ }
+ .content_box{
+   display: none;
+ }
+ .button{
+   position: relative;
+   left: max(10%, 80%);
+ }
+ .button .button5{
+   height: max(0.2em, 3em);
+   width: max(0.2em, 3em);
+   font-size: clamp(0.2em, 2vw, 0.7em)
+ }
+ .button .button6{
+   height: max(0.2em, 3em);
+   width: max(0.2em, 3em);
+   font-size: clamp(0.2em, 2vw, 0.7em)
+ }
+ .sect_2_container .container_image{
+   position: relative;
+   left: 0;
+   top: 10%;
+ }
+ .sect_2_container .container_image .sect_2_img{
+   height: min(9.5rem, 18em);
+   width: min(9.5rem, 26em);
+ }
+ .about-us{
+   position: relative;
+   margin-top: 2em;
+   margin-bottom: 4em
+ }
+ #about-us .my_container{
+   grid-template-columns: auto;
+ }
+ .my_container .side-text{
+   display: none;
+ }
+ .about-us-card p{
+   font-size: clamp(.2em, 2vw, 1.2em);
+ }
+
+ .sect_3 {
+   display: block;
+   margin-top: -3.5em;
+ }
+ .sect_3 .sect_3_container{
+   height: 10em;
+   width: 22.9em;
+   margin-top: 2rem;
+   margin-left: max(-3em);
+ }
+ .sect_3_container .div-1{
+   margin-top: 0.4em;
+ }
+ .sect_3_container .div-1 .text-4{
+   padding-bottom: 0.5em;
+   font-family: Taviraj;
+   font-size: max(0.7em, 1em);
+   font-weight: 400;
+   text-align: left;
+ }
+ .sect_3_container .div-1 .text-5{
+   font-family: Nunito;
+   font-size: max(0.1em, 0.58em);
+   font-weight: 500;
+   line-height: 1em;
+   text-align: left;
+   
+ }
+ .sect_3_container .div-1 .text-3{
+   margin-bottom: 0;
+   margin-top: -1em;
+   font-size: 1em;
+ }
+ .sect_3_container div .non_logo{
+   height: max(1.5em, 7em);
+   position: relative;
+   top: 30%;
+   left: -4%;
+ }
+ .sect_3_container div .secl_logo{
+   height: max(1.5em, 10em);
+   margin-right: .5em;
+ }
+ .dental-product{
+   margin-left: -5%; 
+ }
+ .dental-product h3{
+   text-align: center;
+ }
+ .dental-product hr{
+   position: relative;
+   left: 35%;
+   width: 12em;
+ }
+ .product{
+   display: grid;
+   grid-template-columns: auto auto auto auto;
+   width: 100%;   
+   height: 20vh; 
+   overflow-x: auto; 
+   z-index: 1;
+   padding: 1em 0.2em;
+ }
+ .product .product-box{
+   align-items: center;
+   justify-content: center;
+   height: 21em;
+   width: 10.5em;
+   font-family: Taviraj;
+   font-size: 0.9em;
+   font-weight: 400;
+ }
+ .product-box .product-image{
+   height: 10.4em;
+   width: 10.2em;
+   margin-left: -1em;
+ }
+ .topics{
+   display: none;
+   
+ }
+ .topics .topic-image{
+   width: 0;
+   position: absolute;
+   left: 50%;
+   display: none;
+ }
+
+}
+
+@media screen and (max-width: 499px) {
+ .footer-container {
+   grid-template-columns: auto;
+ }
+}
